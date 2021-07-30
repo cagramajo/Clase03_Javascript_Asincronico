@@ -1,0 +1,20 @@
+{
+  "name": "Clase03_Javascript_Asincronico",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cagramajo/Clase03_Javascript_Asincronico.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cagramajo/Clase03_Javascript_Asincronico/issues"
+  },
+  "homepage": "https://github.com/cagramajo/Clase03_Javascript_Asincronico#readme"
+}
