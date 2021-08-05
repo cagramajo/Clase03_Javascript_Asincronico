@@ -14,10 +14,13 @@ function muestraPalabra(arrayPalabra, i, callBack) {
         console.log(`Se mostrarón ${i} palabras`);
         clearTimeout();
     }
-    setTimeout(()=>{
-        callBack(arrayPalabra[i]);
-        muestraPalabra(arrayPalabra, i+1, callBack);
-    }, 1000)
+    else{
+        setTimeout(()=>{
+            callBack(arrayPalabra[i]);
+            muestraPalabra(arrayPalabra, i+1, callBack);
+        }, 1000)
+    }
+
 }
 
 const recorreFrase = (frase) => {
