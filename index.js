@@ -8,21 +8,21 @@
 // Configurar tiempo de pausa
     // Parametrizable o incluso ausente.
 
-function muestraPalabra(arrayPalabra) {
-    //console.log(arrayPalabra);
-    console.log(arrayPalabra.length)
-    if(arrayPalabra.length === 0){
-        console.log('fin');
+function muestraPalabra(arrayPalabra, i, callBack) {
+    if(arrayPalabra.length == i){
+        console.log(`Se mostrarón ${i} palabras`);
     }
-    else{
-        console.log(arrayPalabra[0]);
-        muestraPalabra(arrayPalabra.splice(1,arrayPalabra.length));
-    }   
+    setTimeout(()=>{
+        callBack(arrayPalabra[i]);
+        muestraPalabra(arrayPalabra, i+1, callBack);
+    }, 1000)
 }
 
 const recorreFrase = (frase) => {
     let palabras = frase.split(' ');
-    muestraPalabra(palabras);
+    muestraPalabra(palabras, 0, (e) =>{
+        console.log(e)
+    });
     //setTimeout(muestraPalabra(palabras), 1000);
 }
 
