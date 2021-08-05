@@ -8,7 +8,7 @@
 // Configurar tiempo de pausa
     // Parametrizable o incluso ausente.
 
-function muestraPalabra(arrayPalabra, i, callBack) {
+function muestraPalabra(arrayPalabra, pausa, i, callBack) {
     //console.log(arrayPalabra.length)
     if(arrayPalabra.length == i){
         console.log(`Se mostrarón ${i} palabras`);
@@ -17,18 +17,18 @@ function muestraPalabra(arrayPalabra, i, callBack) {
     else{
         setTimeout(()=>{
             callBack(arrayPalabra[i]);
-            muestraPalabra(arrayPalabra, i+1, callBack);
-        }, 1000)
+            muestraPalabra(arrayPalabra, pausa, i+1, callBack);
+        }, pausa)
     }
 
 }
 
-const recorreFrase = (frase) => {
+const recorreFrase = (frase, pausa) => {
     let palabras = frase.split(' ');
-    muestraPalabra(palabras, 0, (e) =>{
+    muestraPalabra(palabras, pausa, 0, (e) =>{
         console.log(e)
     });
     //setTimeout(muestraPalabra(palabras), 1000);
 }
 
-recorreFrase('Esta es una frase de prueba');
+recorreFrase('Esta es una frase de prueba', 3000);
