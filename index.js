@@ -9,8 +9,10 @@
     // Parametrizable o incluso ausente.
 
 function muestraPalabra(arrayPalabra, i, callBack) {
+    //console.log(arrayPalabra.length)
     if(arrayPalabra.length == i){
         console.log(`Se mostrarón ${i} palabras`);
+        clearTimeout();
     }
     setTimeout(()=>{
         callBack(arrayPalabra[i]);
@@ -26,4 +28,4 @@ const recorreFrase = (frase) => {
     //setTimeout(muestraPalabra(palabras), 1000);
 }
 
-console.log(recorreFrase('Esta es una frase de prueba'));
+recorreFrase('Esta es una frase de prueba');
