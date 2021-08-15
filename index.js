@@ -8,27 +8,46 @@
 // Configurar tiempo de pausa
     // Parametrizable o incluso ausente.
 
-function muestraPalabra(arrayPalabra, pausa, i, callBack) {
-    //console.log(arrayPalabra.length)
-    if(arrayPalabra.length == i){
-        console.log(`Se mostrarón ${i} palabras`);
-        clearTimeout();
-    }
-    else{
-        setTimeout(()=>{
-            callBack(arrayPalabra[i]);
-            muestraPalabra(arrayPalabra, pausa, i+1, callBack);
-        }, pausa)
-    }
+//// Aqui se implementa lo del ejercicio
 
+function palabraYpausa (palabra, tiempo, callBackPalabraYpausa) {
+    setTimeout(()=>{
+        console.log(palabra)
+        callBackPalabraYpausa()
+    }, tiempo);    
 }
 
-const recorreFrase = (frase, pausa) => {
-    let palabras = frase.split(' ');
-    muestraPalabra(palabras, pausa, 0, (e) =>{
-        console.log(e)
-    });
-    //setTimeout(muestraPalabra(palabras), 1000);
+function pasaPalabras(frase, tiempo, leidas, callBack){
+    if(frase.length > 0){
+        let palabraAmostrar = frase.shift();
+        //console.log(frase);
+        palabraYpausa(palabraAmostrar, tiempo, function(){
+            pasaPalabras(frase, tiempo, ++leidas, callBack);
+        });
+    } else {
+        cantidadPalabras(leidas, callBack);
+    }
 }
 
-recorreFrase('Esta es una frase de prueba', 3000);
+function cantidadPalabras(leidas, callBackFinal){
+    setTimeout(function(){
+        console.log(`Se leyeron ${leidas} palabras`);
+        callBackFinal();
+    }, 1000);
+}
+
+function recorreFrase(oracion, pausa, callBack){
+    let frase = oracion.split(' ');
+    pasaPalabras(frase, pausa, 0, callBack);
+}
+
+recorreFrase('La ultima prueba del ejercicio', 500, function(){
+    console.log('Proceso finalizado');
+})
+
+
+
+
+
+
+
